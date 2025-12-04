@@ -16,11 +16,12 @@ import main.MenuItem;
 public class CurrentOrderActivity extends AppCompatActivity {
 
     private ListView listViewOrderItems;
-    private TextView textSubtotal;
+    private TextView textSubtotal, textTax, textTotal;
     private Button btnRemoveItem, btnPlaceOrder;
     private OrderManager orderManager;
     private OrderItemAdapter adapter;
     private int selectedPosition = -1;
+    private static final double TAX_RATE = 0.06625;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +29,12 @@ public class CurrentOrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_current_order);  // create this XML
 
         orderManager = OrderManager.getInstance();
-
+        textTax = findViewById(R.id.textTax);
         listViewOrderItems = findViewById(R.id.listViewOrderItems);
         textSubtotal = findViewById(R.id.textSubtotal);
         btnRemoveItem = findViewById(R.id.btnRemoveItem);
         btnPlaceOrder = findViewById(R.id.btnPlaceOrder);
+        textTotal = findViewById(R.id.textTotal);
 
         setupListView();
         updateSubtotal();
@@ -42,7 +44,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
     }
 
     private void setupListView() {
-        List<MenuItem> items = orderManager.getCurrentItems();
+        List<MenuItem> items = orderManager.getCurrentOrder().getItems();
         adapter = new OrderItemAdapter(this, items);
         listViewOrderItems.setAdapter(adapter);
 
@@ -53,7 +55,12 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
     private void updateSubtotal() {
         double subtotal = orderManager.getCurrentSubtotal();
+        double tax = subtotal * TAX_RATE;
+        double total = subtotal + tax;
+
         textSubtotal.setText(String.format("Subtotal: $%.2f", subtotal));
+        textTax.setText(String.format("Tax: $%.2f", tax));
+        textTotal.setText(String.format("Total: $%.2f", total));
     }
 
     private void removeSelectedItem() {
@@ -69,7 +76,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
     }
 
     private void confirmPlaceOrder() {
-        if (orderManager.getCurrentItems().isEmpty()) {
+        if (orderManager.getCurrentOrder().getItems().isEmpty()) {
             Toast.makeText(this, "Current order is empty", Toast.LENGTH_SHORT).show();
             return;
         }

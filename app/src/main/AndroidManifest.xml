@@ -20,6 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- Other screens -->
+        <activity android:name=".DonutActivity" />
+        <activity android:name=".CoffeeActivity" />
+        <activity android:name=".SandwichActivity" />
+        <activity android:name=".CurrentOrderActivity" />
+        <activity android:name=".StoreOrdersActivity" />
+
     </application>
 
 </manifest>

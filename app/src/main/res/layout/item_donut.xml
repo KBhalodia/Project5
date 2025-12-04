@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical">
+
+    <!-- Donut Image -->
+    <ImageView
+        android:id="@+id/imageDonut"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/donut_icon"
+        android:contentDescription="Donut Image" />
+
+    <!-- Name + Price Column -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingStart="12dp">
+
+        <TextView
+            android:id="@+id/textDonutName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Donut Name"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/textDonutPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$0.00"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <!-- Add Button -->
+    <Button
+        android:id="@+id/buttonAddDonut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add" />
+
+</LinearLayout>

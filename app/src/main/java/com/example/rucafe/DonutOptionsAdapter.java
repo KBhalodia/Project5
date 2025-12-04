@@ -35,21 +35,37 @@ public class DonutOptionsAdapter extends RecyclerView.Adapter<DonutOptionsAdapte
                 .inflate(R.layout.item_donut, parent, false);  // create this XML
         return new DonutViewHolder(view);
     }
+    private int getDonutImageRes(Donut donut) {
+        String flavor = donut.getFlavor(); // or however you store name
+
+        if (flavor.equals("Glazed")) return R.drawable.glazed;
+        if (flavor.equals("Chocolate Frosted")) return R.drawable.chocolate_frosted;
+        if (flavor.equals("Strawberry Frosted")) return R.drawable.straw_frosted;
+        if (flavor.equals("Jelly")) return R.drawable.jelly;
+        if (flavor.equals("Boston Cream")) return R.drawable.boston_cream;
+        if (flavor.equals("Matcha")) return R.drawable.matcha;
+        if (flavor.equals("Mochi")) return R.drawable.mochi;
+        if (flavor.equals("Powdered")) return R.drawable.powdered;
+        if (flavor.equals("Red Velvet")) return R.drawable.redvelvet;
+        if (flavor.equals("Strawberry Sprinkled")) return R.drawable.straw_sprinkledonut;
+        if (flavor.equals("Vanilla Frosted")) return R.drawable.vanilla_donut;
+        if (flavor.equals("Double Chocolate")) return R.drawable.double_chocolate;
+        if (flavor.equals("Cookies & Cream")) return R.drawable.cookies_cream_donut;
+        if (flavor.equals("Donut Holes")) return R.drawable.donut_holes;
+
+        return R.drawable.donut_icon;
+    }
+
 
     @Override
     public void onBindViewHolder(@NonNull DonutViewHolder holder, int position) {
         Donut donut = donuts.get(position);
 
-        // TODO: replace with donut.getFlavor() if you have that
-        holder.textDonutName.setText(donut.toString());
-
-        // TODO: call donut.price() or similar
+        holder.textDonutName.setText(donut.getFlavor()); // better than toString
         double price = donut.price();
         holder.textDonutPrice.setText(String.format("$%.2f", price));
 
-        // TODO: map donut flavor -> drawable resource
-        // e.g., if (donut.getFlavor().equals("Glazed")) { imageDonut.setImageResource(R.drawable.donut_glazed); }
-        holder.imageDonut.setImageResource(R.drawable.donut_placeholder);
+        holder.imageDonut.setImageResource(getDonutImageRes(donut));
 
         holder.buttonAdd.setOnClickListener(v -> {
             // Create a new donut with quantity 1

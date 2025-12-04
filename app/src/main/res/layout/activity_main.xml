@@ -1,19 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="RU Cafe"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:paddingBottom="20dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btnDonuts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Order Donuts"/>
+
+    <Button
+        android:id="@+id/btnCoffee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Order Coffee"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnSandwich"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Order Sandwich"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnCurrentOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Current Order"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnStoreOrders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Store Orders"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>

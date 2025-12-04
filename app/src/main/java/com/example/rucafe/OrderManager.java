@@ -44,6 +44,19 @@ public class OrderManager {
         currentOrder.removeItem(item);
     }
 
+    public ArrayList<MenuItem> getCurrentItems() {
+        if (currentOrder == null) {
+            currentOrder = new Order();
+        }
+        return (ArrayList<MenuItem>) currentOrder.getItems();
+    }
+
+    public double getCurrentSubtotal() {
+        if (currentOrder == null) {
+            currentOrder = new Order();
+        }
+        return currentOrder.getSubtotal();
+    }
     public void placeCurrentOrder() {
         if (currentOrder == null || currentOrder.getItems().isEmpty()) {
             return;

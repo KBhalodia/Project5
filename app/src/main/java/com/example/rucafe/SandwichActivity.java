@@ -77,7 +77,7 @@ public class SandwichActivity extends AppCompatActivity {
         }
 
         // TODO: adjust constructor to match your Sandwich class
-        Sandwich sandwich = new Sandwich(bread, protein, chosen, 1);
+        Sandwich sandwich = new Sandwich(bread, protein, 1);
         orderManager.addToCurrentOrder(sandwich);
 
         Toast.makeText(this, "Sandwich added to order", Toast.LENGTH_SHORT).show();
